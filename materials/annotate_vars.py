@@ -9,7 +9,7 @@ def func():
 
 
 class A:
-    class_var: str = 'foo'
+    class_var: str = "foo"
 
     def __init__(self):
         self.inst_var: int = 10

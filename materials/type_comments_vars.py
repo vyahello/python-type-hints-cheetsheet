@@ -19,7 +19,7 @@ def func():
 
 
 class A:
-    class_var = 'foo'  # type: str
+    class_var = "foo"  # type: str
 
     def __init__(self):
         self.inst_var = 10  # type: int

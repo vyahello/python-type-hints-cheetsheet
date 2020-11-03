@@ -13,8 +13,8 @@ def say_hello_to_all(names: Iterable[str], exited: bool) -> None:
             print(f"Hello {name}!!!")
 
 
-name: str = 'Mike'
-names: Iterable[str] = ['Mike', 'Jake', 'Luke']
+name: str = "Mike"
+names: Iterable[str] = ["Mike", "Jake", "Luke"]
 exited: bool = True
 
 say_hello_to(name)
