@@ -388,15 +388,15 @@ mypy hello.py
 ## Development notes
 
 ### Additional materials
-- https://docs.python.org/3/library/typing.html
-- https://www.python.org/dev/peps/pep-0483
-- https://www.python.org/dev/peps/pep-0484
-- https://www.python.org/dev/peps/pep-0526
-- https://mypy.readthedocs.io/en/latest
-- https://github.com/python/mypy
+- [https://docs.python.org/3/library/typing.html](https://docs.python.org/3/library/typing.html)
+- [https://www.python.org/dev/peps/pep-0483](https://www.python.org/dev/peps/pep-0483)
+- [https://www.python.org/dev/peps/pep-0484](https://www.python.org/dev/peps/pep-0484)
+- [https://www.python.org/dev/peps/pep-0526](https://www.python.org/dev/peps/pep-0526)
+- [https://mypy.readthedocs.io/en/latest](https://mypy.readthedocs.io/en/latest)
+- [https://github.com/python/mypy](https://github.com/python/mypy)
 
 ### Meta
-Author – Volodymyr Yahello vyahello@gmail.com
+Author – Volodymyr Yahello.
 
 Distributed under the `MIT` license. See [license](LICENSE.md) for more information.
 
