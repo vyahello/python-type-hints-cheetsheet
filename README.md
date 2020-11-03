@@ -1,5 +1,17 @@
-# Python type hints cheetsheet
-Implementation of python type annotations cheetsheet which is aimed on helping to comprehend python type annotations by newcomers.
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
+
+# Python type hints cheatsheet
+> Implementation of python type annotations cheatsheet which is aimed on helping to comprehend python type annotations by newcomers.
+
+## Tools
+
+### Language(s)
+- python 3.6, 3.7, 3.8, 3.9
+
+### Development
+- [black](https://black.readthedocs.io/en/stable/) code formatter
 
 ## Table of contents
 - [Type comments](#type-comments)
@@ -33,7 +45,7 @@ def func():
 
 
 class A:
-    class_var = 'foo'  # type: str
+    class_var = "foo"  # type: str
 
     def __init__(self):
         self.inst_var = 10  # type: int
@@ -46,8 +58,9 @@ Type comments functions
 ```python
 # type_comments_funcs.py
 
-def say_hello_to(name  # type: str
-                 ):
+def say_hello_to(
+    name,  # type: str
+):
     # type: (str) -> str
     return f"Hello {name}!"
 ```
@@ -58,10 +71,12 @@ Type comments methods
 class Goat:
     legs_number = 4  # type: int
 
-    def __init__(self, height,  # type: int
-                 weight,  # type: int
-                 hungry  # type: int
-                 ):
+    def __init__(
+        self,
+        height,  # type: int
+        weight,  # type: int
+        hungry,  # type: int
+    ):
         # type: (int, int, bool) -> None
         self._height = height  # type: int
         self._weight = weight  # type: int
@@ -71,8 +86,9 @@ class Goat:
         # type: () -> str
         return f"Goat has {self._height} height and {self._weight} weight!"
 
-    def feed_with(self, food  # type: str
-                  ):
+    def feed_with(
+        self, food  # type: str
+    ):
         # type: (str) -> str
         if self._hungry:
             return f"Goat is fed up with {food}"
@@ -83,19 +99,21 @@ Type comments with custom types
 # type_comments_custom.py
 
 class Book:
-    def __init__(self, name  # type: str
-                 ):
+    def __init__(
+        self, name  # type: str
+    ):
         # type: (str) -> None
         self._name = name  # type: str
 
     def title(self):
         # type: () -> str
-        return f'{self._name} book'
+        return f"{self._name} book"
 
 
 class Table:
-    def __init__(self, book  # type: Book
-                 ):
+    def __init__(
+        self, book  # type: Book
+    ):
         # type: (Book) -> None
         self._book = book  # type: Book
 
@@ -104,7 +122,7 @@ class Table:
         return f'Table has "{self._book.title()}"'
 
 
-book = Book('Python type annotations')  # type: Book
+book = Book("Python type annotations")  # type: Book
 table = Table(book)  # type: Table
 ```
 
@@ -114,6 +132,7 @@ Type annotations are available starting from `python 3.5`.
 Annotate variables
 ```python
 # annotate_vars.py
+
 var: int = 10
 var1: list = []
 var2: dict = {}
@@ -125,7 +144,7 @@ def func():
 
 
 class A:
-    class_var: str = 'foo'
+    class_var: str = "foo"
 
     def __init__(self):
         self.inst_var: int = 10
@@ -177,12 +196,13 @@ print(goat.feed_with.__annotations__)
 Annotate with custom types
 ```python
 # annotate_custom_types.py
+
 class Book:
     def __init__(self, name: str) -> None:
         self._name: str = name
 
     def title(self) -> str:
-        return f'{self._name} book'
+        return f"{self._name} book"
 
 
 class Table:
@@ -193,7 +213,7 @@ class Table:
         return f'Table has "{self._book.title()}"'
 
 
-book: Book = Book('Python type annotations')
+book: Book = Book("Python type annotations")
 table: Table = Table(book)
 print(table.__init__.__annotations__)
 print(table.content.__annotations__)
@@ -205,17 +225,25 @@ Generic built-in types
 # basic_types.py
 
 from typing import (
-    Any, List, Tuple, Set, Dict,
-    Iterable, Union, Optional,
-    Generator, Callable, NoReturn
+    Any,
+    List,
+    Tuple,
+    Set,
+    Dict,
+    Iterable,
+    Union,
+    Optional,
+    Generator,
+    Callable,
+    NoReturn,
 )
 
 
 _list: List[int] = [1, 2, 3]
-_tuple: Tuple[int, str, float] = (2, 'foo', 0.1)
+_tuple: Tuple[int, str, float] = (2, "foo", 0.1)
 _tuple_range: Tuple[int, ...] = tuple(range(100))
 _dict: Dict[int, bool] = {1: True}
-_set: Set[str] = {'foo', 'bar'}
+_set: Set[str] = {"foo", "bar"}
 
 
 def double_itself(param: Any) -> Any:
@@ -239,23 +267,25 @@ def generator_range(param: int) -> Generator[int, None, None]:
     yield from range(param)
 
 
-def sum_of_callable(callable_param: Callable[[int], Iterable[int]], rng: int = 5) -> int:
+def sum_of_callable(
+    callable_param: Callable[[int], Iterable[int]], rng: int = 5
+) -> int:
     return sum(callable_param(rng))
 
 
 def never_return_value() -> NoReturn:
-    raise RuntimeError('Never return a value!')
+    raise RuntimeError("Never return a value!")
 
 
 print(double_itself(2))
 print(double_itself(2.0))
-print(double_itself('2'))
+print(double_itself("2"))
 
 print(square_of(3))
 print(square_of(3.0))
 
 print(length_of())
-print(length_of('foo'))
+print(length_of("foo"))
 
 print(sum_of([1, 2, 3]))
 print(sum_of({1, 2, 3}))
@@ -273,6 +303,7 @@ Type aliases
 # type_aliases.py
 
 from typing import List, Union
+
 Vector = List[Union[int, float]]
 
 
@@ -289,18 +320,20 @@ Create own type
 
 from typing import List, NewType, TypeVar
 
-Position = NewType('Position', int)
-IntOrStr = TypeVar('IntOrStr', int, str)
+Position = NewType("Position", int)
+IntOrStr = TypeVar("IntOrStr", int, str)
 
 some_position = Position(10) + Position(7)
 
 
-def count_number_of_element(container: List[IntOrStr], element: IntOrStr) -> int:
+def count_number_of_element(
+    container: List[IntOrStr], element: IntOrStr
+) -> int:
     return container.count(element)
 
 
 print(some_position)
-print(count_number_of_element([1, 1, 2, 'foo', 'bar', 1], 1))
+print(count_number_of_element([1, 1, 2, "foo", "bar", 1], 1))
 ```
 
 ### Mypy static type checker tool
@@ -339,8 +372,8 @@ def say_hello_to_all(names: Iterable[str], exited: bool) -> None:
             print(f"Hello {name}!!!")
 
 
-name: str = 'Mike'
-names: Iterable[str] = ['Mike', 'Jake', 'Luke']
+name: str = "Mike"
+names: Iterable[str] = ["Mike", "Jake", "Luke"]
 exited: bool = True
 
 say_hello_to(name)
@@ -352,6 +385,8 @@ mypy -h
 mypy hello.py
 ```
 
+## Development notes
+
 ### Additional materials
 - https://docs.python.org/3/library/typing.html
 - https://www.python.org/dev/peps/pep-0483
@@ -360,12 +395,23 @@ mypy hello.py
 - https://mypy.readthedocs.io/en/latest
 - https://github.com/python/mypy
 
+### Meta
+Author – Volodymyr Yahello vyahello@gmail.com
 
-# Contributing
-- clone the repository
-- configure Git for the first time after cloning with your name and email
-  ```bash
-  git config --local user.name "Volodymyr Yahello"
-  git config --local user.email "vyahello@gmail.com"
-  ```
-- `python3.6` is required to run the code
+Distributed under the `MIT` license. See [license](LICENSE.md) for more information.
+
+You can reach out me at:
+* [vyahello@gmail.com](vyahello@gmail.com)
+* [https://twitter.com/vyahello](https://twitter.com/vyahello)
+* [https://www.linkedin.com/in/volodymyr-yahello-821746127](https://www.linkedin.com/in/volodymyr-yahello-821746127)
+
+### Contributing
+I would highly appreciate any contribution and support. If you are interested to add your ideas into project please follow next simple steps:
+
+1. Clone the repository
+2. Configure `git` for the first time after cloning with your `name` and `email`
+3. `pip install -r requirements.txt` to install all project dependencies
+4. Create your feature branch (git checkout -b feature/fooBar)
+5. Commit your changes (git commit -am 'Add some fooBar')
+6. Push to the branch (git push origin feature/fooBar)
+7. Create a new Pull Request
